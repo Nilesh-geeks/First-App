@@ -4,13 +4,13 @@ import Navbar from './components/Navbar'
 import Textform from './components/Textform'
 import { useState } from 'react';
 import Alert from './components/Alert';
-import About from './components/About';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from "react-router-dom";
-import { Routes} from "react-router-dom";
+// import About from './components/About';
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Link
+// } from "react-router-dom";
+// import { Routes} from "react-router-dom";
 
 
 
@@ -47,20 +47,13 @@ function App() {
   }
   return (
     <>
-      <Router>
+      
 
         <Navbar title="First app" mode={mode} tooglemode={tooglemode} m={m} />
         <Alert alert={alert} mode={mode} />
-        <div className="container my-4">
-          <Routes>
-                <Route exact path="/about" element={<About about="About Us" mode ={mode}/>}/>
-               
-               <Route exact path="/" element={<Textform heading="Enter text to analyze" mode={mode} showAlert={showAlert} />}/>
-               
-           </Routes>
-         </div>
         
-      </Router>
+        <Textform heading="Enter text to analyze" mode={mode} showAlert={showAlert} />
+        
     </>
   );
 }
