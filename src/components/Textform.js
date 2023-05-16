@@ -16,6 +16,12 @@ export default function Textform(props) {
     setText(newtext);
     props.showAlert("Converted to LowerCase", "Sucess");
   }
+  const capitalize = () => {
+    
+    let newtext = text.charAt(0).toUpperCase() + text.toLowerCase().slice(1);;
+    setText(newtext);
+    props.showAlert("Capitalized word", "Sucess");
+  }
   const clear = () => {
     setText("");
     props.showAlert("Text Erased ", "Sucess");
@@ -31,7 +37,7 @@ export default function Textform(props) {
     alert("Text copied Successfully ");
   }
   const handle = (event) => {
-    console.log("clicked on handle");
+    // console.log("clicked on handle");
     setText(event.target.value)
   }
   const [text, setText] = useState("");
@@ -48,11 +54,12 @@ export default function Textform(props) {
         <button disabled={text.length===0} onClick={clear} className="btn btn-info mx-1 my-3">Clear Text</button>
         <button disabled={text.length===0} onClick={remove} className="btn btn-info mx-4 my-3">Remove Extra Spaces</button>
         <button disabled={text.length===0} onClick={copy} className="btn btn-info mx-4 my-3">Copy Text</button>
+        <button disabled={text.length===0} onClick={capitalize} className="btn btn-info mx-4 my-3">Capitalize Word</button>
       </div>
     </div>
     <div className="container" style={{ color: props.mode === 'light' ? '#042743' : 'white' }}>
       <h1>Your text summary</h1>
-      <p>{text.split(" ").filter(function(n) { return n !== '' }).length }words and {text.length} characters</p>
+      <p>{text.split(/\s+/).filter(function(n) { return n !== '' }).length }words and {text.length} characters</p>
 
       <p>{0.008 * text.split(" ").filter(function(n){return n!==''}).length} minutes Read</p>
       <h2>Preivew</h2>
